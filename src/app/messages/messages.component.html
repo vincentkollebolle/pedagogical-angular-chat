@@ -1,0 +1,31 @@
+<!-- Colonne droite : messages -->
+<div class="chat-box">
+  <h2>Messages</h2>
+  <div #messagesContainer class="messages">
+    <div
+      *ngFor="let msg of messages; let i = index"
+      [class.mention]="msg.message.toLowerCase().includes('@' + this.currentUserPseudo!.toLowerCase())"
+      [class.own-message]="msg.pseudo === currentUserPseudo && msg.type !== Type.System"
+      [ngClass]="msg.type"
+    >
+      <ng-container *ngIf="msg.type === Type.System; else message">
+        {{ msg.pseudo }} {{ msg.message }}
+      </ng-container>
+
+      <ng-template #message>
+        <ng-container *ngIf="currentUserPseudo !== msg.pseudo; else messageUtilisateur">
+          <!-- Affiche le pseudo uniquement si le précédent non système est différent -->
+          <ng-container *ngIf="shouldShowPseudo(i)">
+            <strong (click)="onPseudoClick(msg.pseudo)" class="clickable">{{ msg.pseudo }} ></strong>
+          </ng-container>
+          {{ msg.message }}
+        </ng-container>
+
+        <ng-template #messageUtilisateur>
+          {{ msg.message }}
+        </ng-template>
+      </ng-template>
+    </div>
+  </div>
+  <app-envoyer-message></app-envoyer-message>
+</div>

@@ -1,0 +1,27 @@
+.gif-runner {
+  position: absolute;
+  bottom: 82px;
+  left: -200px;
+  width: 100px;
+  z-index: 10;
+  animation: moveAcross 3s linear forwards;
+}
+
+.gif-runner img {
+  width: 100%;
+  height: auto;
+}
+
+@keyframes moveAcross {
+  from {
+    left: -200px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  to {
+    left: 100vw;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,12 @@
+<!-- Envoi de message -->
+<form (ngSubmit)="sendMessage()">
+  <input
+    type="text"
+    [(ngModel)]="message"
+    name="message"
+    placeholder="Envoyer un message"
+    required
+    (keydown.enter)="sendMessage()"
+  />
+  <button type="submit">Envoyer</button>
+</form>

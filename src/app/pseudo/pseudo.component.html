@@ -1,0 +1,30 @@
+<div class="pseudo-screen">
+  <div class="pseudo-card">
+    <h1>Toriisaging</h1>
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+      <!-- Bar horizontale du haut -->
+      <rect x="20" y="30" width="160" height="10" fill="darkred"/>
+
+      <!-- Bar horizontale du dessous -->
+      <rect x="40" y="45" width="120" height="10" fill="firebrick"/>
+
+      <!-- Piliers verticaux -->
+      <rect x="50" y="55" width="10" height="120" fill="saddlebrown"/>
+      <rect x="140" y="55" width="10" height="120" fill="saddlebrown"/>
+
+      <!-- Traverse horizontale intermédiaire -->
+      <rect x="65" y="100" width="70" height="8" fill="brown"/>
+    </svg>
+    <form (ngSubmit)="joinChat()">
+      <input
+        type="text"
+        [(ngModel)]="pseudo"
+        name="message"
+        placeholder="Pseudo"
+        required
+        (keydown.enter)="joinChat()"
+      />
+      <button #movingBtn (mouseover)="escape($event)" type="submit">Connexion</button>
+    </form>
+  </div>
+</div>

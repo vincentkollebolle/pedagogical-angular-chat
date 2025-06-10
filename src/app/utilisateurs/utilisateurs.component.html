@@ -1,0 +1,15 @@
+<!-- Colonne gauche : utilisateurs -->
+<div class="user-list">
+  <h2>Utilisateurs</h2>
+  <ul>
+    <li *ngFor="let user of users | tri">
+      <div class="user-item">
+        <span class="user-name" (click)="onPseudoClick(user)" class="clickable">{{ user }}</span>
+        <button class="mute-btn" *ngIf="user !== pseudo" (click)="muteUser(user)">
+          <ng-container *ngIf="isUserMuted(user); else unmute">🔇</ng-container>
+          <ng-template #unmute>🔊</ng-template>
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
